@@ -10,7 +10,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate }) => 
   const menuItems = [
     { id: "mapa", label: "Mapa", icon: "bi-map" },
     { id: "alertas", label: "Alertas de Floração", icon: "bi-bell" },
-    { id: "alertasia", label: "Alertas IA", icon: "bi-robot" },
+    // { id: "alertasia", label: "Alertas IA", icon: "bi-robot" },
     { id: "estatisticas", label: "Estatísticas", icon: "bi-bar-chart-line" },
   ];
 
