@@ -37,7 +37,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate }) => 
         }}
       >
         <div className="p-4 border-bottom border-secondary">
-          <h4 className="fw-bold mb-0 text-center">🌿FloraMap</h4>
+          <h4 className="fw-bold mb-0 text-center">🌿FloraPulse</h4>
           <p className="text-center small text-secondary mb-0">Painel Ambiental</p>
         </div>
 

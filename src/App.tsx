@@ -56,7 +56,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate }) => {
         }}
       >
         <div className="p-4 border-bottom border-secondary text-center">
-          <h4 className="fw-bold mb-0">🌿FloraMap</h4>
+          <h4 className="fw-bold mb-0">🌿FloraPulse</h4>
           <p className="small text-secondary mb-0">Painel Ambiental</p>
         </div>
         <nav className="flex-grow-1 mt-3">
