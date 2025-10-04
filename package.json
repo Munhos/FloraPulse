@@ -12,6 +12,7 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "axios": "^1.12.2",
+    "bootstrap": "^5.3.8",
     "deck.gl": "^9.1.15",
     "leaflet": "^1.9.4",
     "react": "^19.2.0",
