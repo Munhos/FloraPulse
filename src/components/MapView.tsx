@@ -34,7 +34,7 @@ export const MapView: React.FC = () => {
   const [data, setData] = useState<PlantItem[]>([]);
   const [filteredData, setFilteredData] = useState<PlantItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const [showFilters, setShowFilters] = useState(false);
+  const [showFilters, setShowFilters] = useState(false); // Começa fechado
 
   // Filtros
   const [filtroFamilia, setFiltroFamilia] = useState("");
@@ -56,6 +56,7 @@ export const MapView: React.FC = () => {
       );
 
       setData(registrosValidos);
+      setFilteredData(registrosValidos); // Inicialmente mostra todos
 
       setFamilias(Array.from(new Set(registrosValidos.map((r) => r.familia))).sort());
       setGeneros(Array.from(new Set(registrosValidos.map((r) => r.genero))).sort());
@@ -68,9 +69,9 @@ export const MapView: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const anyFilterSelected = filtroFamilia || filtroGenero || filtroPais;
-    if (!anyFilterSelected) {
-      setFilteredData([]);
+    // Se todos os filtros estiverem vazios, mostra todos
+    if (!filtroFamilia && !filtroGenero && !filtroPais) {
+      setFilteredData(data);
       return;
     }
 
@@ -80,6 +81,7 @@ export const MapView: React.FC = () => {
       if (filtroPais && item.pais !== filtroPais) return false;
       return true;
     });
+
     setFilteredData(filtrado);
   }, [filtroFamilia, filtroGenero, filtroPais, data]);
 

@@ -1,0 +1,28 @@
+{
+  "especies": [
+    "Ipê-Amarelo", "Bromelia balansae", "Jacarandá", "Orquídea Cattleya", "Hibiscus rosa-sinensis",
+    "Vitória-régia", "Manacá-da-serra", "Bougainvillea", "Heliconia rostrata", "Lírio-do-brejo"
+  ],
+  "paises": [
+    "Argentina", "Chile", "Uruguai", "Peru", "Colômbia", "Paraguai", "Equador", "Venezuela", "Bolívia", "Guiana"
+  ],
+  "locais": [
+    "região norte", "floresta subtropical", "planalto andino", "zona costeira", "cerrado seco",
+    "floresta úmida", "pantanal", "cordilheira", "serra central", "vale úmido"
+  ],
+  "mensagens": [
+    "entrou em floração precoce devido à alta umidade.",
+    "atingiu o pico de floração com coloração intensa.",
+    "teve sua floração adiada por falta de chuvas.",
+    "iniciou o processo de brotamento após queda de temperatura.",
+    "encerrou o período de floração.",
+    "mostra sinais de floração fora de época.",
+    "teve floração estimulada por aumento de temperatura.",
+    "entrou em estágio de dormência floral.",
+    "foi detectada nova floração no mesmo local do último registro.",
+    "mostra padrão de floração sincronizada com outras espécies."
+  ],
+  "niveis": [
+    "Baixo", "Moderado", "Alto", "Crítico"
+  ]
+}
