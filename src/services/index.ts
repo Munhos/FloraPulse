@@ -1,84 +1,45 @@
+// services/routesService.ts
 import axios from "axios";
 
 export const routesService = {
-    getVegetacao: async (lat_min: string | number, lat_max: string | number, lon_min: string | number, lon_max: string | number, limit = 300) => {
-        try {
-            const response = await axios.get("https://api.gbif.org/v1/occurrence/search", {
-                params: {
-                    country: "BR",
-                    kingdom: "Plantae",
-                    hasCoordinate: "true",
-                    decimalLatitude: `${lat_min},${lat_max}`,
-                    decimalLongitude: `${lon_min},${lon_max}`,
-                    limit: limit,
-                },
-            });
-            return response.data.results;
-        } catch (error) {
-            console.error("Erro ao buscar dados de vegetação:", error);
-            return [];
-        }
-    },
+  /**
+   * Busca plantas (flores) usando GBIF
+   */
+  getFlores: async (options?: { limit?: number }) => {
+    try {
+      const { limit = 200 } = options || {};
 
-    getFloresta: async (lat_min: string, lat_max: string, lon_min: string, lon_max: string, limit = 300) => {
-        try {
-            const response = await axios.get("https://api.gbif.org/v1/occurrence/search", {
-                params: {
-                    country: "BR",
-                    kingdom: "Plantae",
-                    hasCoordinate: "true",
-                    habitat: 'forest',
-                    decimalLatitude: `${lat_min},${lat_max}`,
-                    decimalLongitude: `${lon_min},${lon_max}`,
-                    limit: limit,
-                },
-            });
-            return response.data.results;
-        } catch (error) {
-            console.error("Erro ao buscar dados de floresta:", error);
-            return [];
-        }
-    },
+      const res = await axios.get("https://api.gbif.org/v1/occurrence/search", {
+        params: {
+          kingdom: "Plantae",
+          country: "BR",
+          hasCoordinate: true,
+          mediaType: "StillImage",
+          limit,
+        },
+      });
 
+      const results = res.data.results || [];
 
-    getLavouras: async (lat_min: string, lat_max: string, lon_min: string, lon_max: string, limit = 300) => {
-        try {
-            const response = await axios.get("https://api.gbif.org/v1/occurrence/search", {
-                params: {
-                    country: "BR",
-                    kingdom: "Plantae",
-                    hasCoordinate: "true",
-                    familyKey: 3043,
-                    decimalLatitude: `${lat_min},${lat_max}`,
-                    decimalLongitude: `${lon_min},${lon_max}`,
-                    limit: limit,
-                },
-            });
-            return response.data.results;
-        } catch (error) {
-            console.error("Erro ao buscar dados de lavouras:", error);
-            return [];
-        }
-    },
+      const formatted = results.map((r: any) => ({
+        id: r.key,
+        especie: r.scientificName || "Desconhecida",
+        familia: r.family || "Não especificada",
+        genero: r.genus || "",
+        pais: r.country || "Brasil",
+        local: r.locality || r.municipality || "Local não informado",
+        data: r.eventDate || "",
+        lat: r.decimalLatitude,
+        lon: r.decimalLongitude,
+        habitat: r.habitat || "Não informado",
+        imagem: r.media?.[0]?.identifier || null,
+        fonte: "GBIF",
+      }));
 
-    getFloricultura: async (lat_min: string, lat_max: string, lon_min: string, lon_max: string, limit = 300) => {
-        try {
-            const response = await axios.get("https://api.gbif.org/v1/occurrence/search", {
-                params: {
-                    country: "BR",
-                    kingdom: "Plantae",
-                    hasCoordinate: "true",
-                    familyKey: 7649,
-                    decimalLatitude: `${lat_min},${lat_max}`,
-                    decimalLongitude: `${lon_min},${lon_max}`,
-                    limit: limit,
-                },
-            });
-            return response.data.results;
-        } catch (error) {
-            console.error("Erro ao buscar dados de floricultura:", error);
-            return [];
-        }
-    },
+      return formatted;
+    } catch (err) {
+      console.error("Erro ao buscar flores no GBIF:", err);
+      return [];
+    }
+  },
 };
-

@@ -1,0 +1,20 @@
+[
+  {
+    "nome": "Tulipas Keukenhof",
+    "tipo": "flor",
+    "pais": "Holanda",
+    "lat_centro": 52.25,
+    "lon_centro": 4.75,
+    "descricao": "Famoso parque de tulipas na Holanda",
+    "ndvi": 0.8
+  },
+  {
+    "nome": "Floresta Amazônica",
+    "tipo": "floresta",
+    "pais": "Brasil",
+    "lat_centro": -3.4653,
+    "lon_centro": -62.2159,
+    "descricao": "A maior floresta tropical do mundo",
+    "ndvi": 0.9
+  }
+]
